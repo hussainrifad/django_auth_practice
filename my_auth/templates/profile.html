@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} Profile {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="my-5 w-50 container">
+    <h4 class="font-monospace text-center font-2xl">Edit Profile Here</h4>
+    {% for m in messages %}
+        <p>{{m}}</p>
+    {% endfor %}
+    <Form novalidate method="post">
+        {% csrf_token %}
+        {{form | crispy}}
+        <button class="btn btn-primary">UPDATE PROFILE</button>
+    </Form>
+    <div class="my-3">
+        <a href="{% url 'changepassword' %}">change password with old password</a><br>
+        <a href="{% url 'changepassword2' %}">change password</a>
+    </div>
+</div>
+{% endblock %}
